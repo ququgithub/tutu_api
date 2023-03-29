@@ -11,7 +11,7 @@ class CreateBanner extends Migration
         // 轮播图
         Schema::create('banner', function (Blueprint $table) {
             $table->id();
-            $table->integer("uid", false, true)->unique();
+            $table->bigInteger("uid", false, true)->unique();
             $table->string("first_title", 32);
             $table->string("second_title", 32)->nullable();
             $table->string("url", 255);

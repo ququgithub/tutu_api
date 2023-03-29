@@ -11,7 +11,7 @@ class CreateSeries extends Migration
         // 图片系列
         Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->integer("uid", false, true)->unique();
+            $table->bigInteger("uid", false, true)->unique();
             $table->string("title", 32);
             $table->string("url", 255);
             $table->string("path", 255);

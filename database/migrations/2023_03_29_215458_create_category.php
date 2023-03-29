@@ -11,7 +11,7 @@ class CreateCategory extends Migration
         // 图片分类
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->integer("uid", false, true)->unique();
+            $table->bigInteger("uid", false, true)->unique();
             $table->string("title", 32);
             $table->tinyInteger("is_show", false, true)->default(2);
             $table->integer("orders", false, true)->default(0);

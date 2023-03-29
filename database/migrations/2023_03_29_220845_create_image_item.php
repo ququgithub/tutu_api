@@ -10,10 +10,10 @@ class CreateImageItem extends Migration
     {
         Schema::create('image_item', function (Blueprint $table) {
             $table->id();
-            $table->integer("uid", false, true)->unique();
-            $table->integer("user_uid", false, true);
-            $table->integer("author_uid", false, true);
-            $table->integer("image_uid", false, true)->default(0);// 张数
+            $table->bigInteger("uid", false, true)->unique();
+            $table->bigInteger("user_uid", false, true);
+            $table->bigInteger("author_uid", false, true);
+            $table->bigInteger("image_uid", false, true)->default(0);// 张数
             $table->string("url", 255);
             $table->string("path", 255);
             $table->integer("download", false, true)->default(0);// 下载数量

@@ -11,7 +11,7 @@ class CreateUser extends Migration
         // 微信用户
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->integer("uid", false, true)->unique();
+            $table->bigInteger("uid", false, true)->unique();
             $table->string("nickname", 32);
             $table->string("mobile", 32)->nullable()->unique();
             $table->string("email", 32)->nullable()->unique();
