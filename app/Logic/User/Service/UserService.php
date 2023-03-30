@@ -6,7 +6,7 @@ namespace App\Logic\User\Service;
 use App\Logic\User\Repository\UserRepository;
 use Closure;
 
-class UserService implements UserServiceInterface
+class UserService extends BaseService implements UserServiceInterface
 {
 
     public static function searchWhere(array $requestParams): Closure
@@ -47,7 +47,7 @@ class UserService implements UserServiceInterface
     public function serviceUserInfo(): array
     {
         return (new UserRepository())->repositoryFind(function ($query) {
-            $query->where("uid", "=", "482058130562223984");
+            $query->where("uid", "=", $this->getUserUid());
         }, [
             "uid",
             "nickname",

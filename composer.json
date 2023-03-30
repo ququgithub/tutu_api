@@ -9,15 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-redis": "*",
         "fideloper/proxy": "^4.4",
+        "firebase/php-jwt": "^6.4",
         "fruitcake/laravel-cors": "^2.0",
         "godruoyi/php-snowflake": "^2.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "overtrue/wechat": "~5.0",
-        "predis/predis": "^2.1",
-        "ext-redis": "*"
+        "predis/predis": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

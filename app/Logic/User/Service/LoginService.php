@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace App\Logic\User\Service;
 
 use App\Library\SnowFlakeId;
+use App\Library\UserJwt;
 use App\Library\WeChatClient;
 use EasyWeChat\Kernel\Exceptions\InvalidConfigException;
 use Illuminate\Support\Facades\Redis;
@@ -35,7 +36,6 @@ class LoginService
                 ]);
                 if (!$createUser) return ["msg" => "信息记录失败"];
             }
-            $tokenKey      = md5($loginInfo["openid"] . time());
             $userCacheInfo = [
                 "uid" => $uid,
                 "openid" => $loginInfo["openid"],
@@ -46,10 +46,8 @@ class LoginService
                 "score" => $score,
                 "remark" => $remark
             ];
-            $setUserCache  = Redis::connection()->client()->set($tokenKey, $userCacheInfo, 86400 * 7);
-            unset($userCacheInfo["openid"], $uid);
-            if ($setUserCache) return ["token" => $tokenKey, "user" => $userCacheInfo];
-            return ["msg" => "登录失败"];
+            $tokenKey      = UserJwt::encodeJwt($userCacheInfo);
+            return ["token" => $tokenKey, "user" => $userCacheInfo];
         }
         return ["msg" => "登录失败"];
     }
