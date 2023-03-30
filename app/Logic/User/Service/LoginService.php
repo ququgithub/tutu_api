@@ -42,7 +42,7 @@ class LoginService
                 "nickname" => $nickname,
                 "mobile" => empty($userInfo["mobile"]) ? "" : $userInfo["mobile"],
                 "email" => empty($userInfo["mobile"]) ? "" : $userInfo["mobile"],
-                "avatar_url" => $userInfo["avatar_url"],
+                "avatar_url" => $userInfo["avatar_url"] ?? "https://img.wxcha.com/m00/50/12/81b6ba3f79a9565ec32bd6d596a99944.jpg",
                 "score" => $score,
                 "remark" => $remark
             ];
