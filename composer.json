@@ -14,7 +14,10 @@
         "godruoyi/php-snowflake": "^2.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "overtrue/wechat": "~5.0",
+        "predis/predis": "^2.1",
+        "ext-redis": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -26,7 +29,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "easywechat-composer/easywechat-composer": true
+        }
     },
     "extra": {
         "laravel": {
