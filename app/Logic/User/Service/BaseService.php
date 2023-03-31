@@ -21,4 +21,9 @@ class BaseService
         $authorization = trim(str_replace("Bearer", "", $authorization));
         return UserJwt::decodeJwt($authorization);
     }
+
+    protected function updateUserInfo(array $userInfo): string
+    {
+        return UserJwt::encodeJwt($userInfo);
+    }
 }

@@ -20,7 +20,7 @@ class CreateUser extends Migration
             $table->tinyInteger("age", false, true)->default(0);
             $table->date("birthday")->nullable();
             $table->string("remark", 100)->default("这家伙很懒，什么都没留下");
-            $table->string("profession", 32)->default("其他");
+            $table->tinyInteger("profession", false, true)->default("其他");// 职业
             $table->decimal("score", 20, 2)->default(0.00);
             $table->integer("invite_count", false, true)->default(0);
             $table->integer("production_count", false, true)->default(0);

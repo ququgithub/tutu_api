@@ -3,8 +3,11 @@ declare(strict_types = 1);
 
 namespace App\Logic\User\Service;
 
+use App\Constant\CacheKey;
 use App\Logic\User\Repository\UserRepository;
 use Closure;
+use Illuminate\Support\Facades\Redis;
+use RedisException;
 
 class UserService extends BaseService implements UserServiceInterface
 {
@@ -24,14 +27,57 @@ class UserService extends BaseService implements UserServiceInterface
         return [];
     }
 
-    public function serviceCreate(array $requestParams): bool
+    public function serviceCreate(array $requestParams): array
     {
-        return (new UserRepository())->repositoryCreate($requestParams);
+        if ((new UserRepository())->repositoryCreate($requestParams)) {
+            return ["msg" => "创建成功"];
+        }
+        return [];
     }
 
-    public function serviceUpdate(array $requestParams): int
+    /**
+     * @throws RedisException
+     */
+    public function serviceUpdate(array $requestParams): array
     {
-        return 0;
+        $uid        = $this->getUserUid();
+        $updateUser = (new UserRepository())->repositoryUpdate([
+            ["uid", "=", $uid]
+        ], [
+            "nickname" => $requestParams["nickname"],
+            "mobile" => $requestParams["mobile"] ?? "",
+            "email" => $requestParams["email"] ?? "",
+            "avatar_url" => $requestParams["avatar_url"],
+            "gender" => $requestParams["gender"],
+            "birthday" => $requestParams["birthday"],
+            "remark" => $requestParams["remark"],
+            "profession" => $requestParams["profession"],
+            "name" => $requestParams["name"],
+        ]);
+        if ($updateUser) {
+            $redis      = Redis::connection()->client();
+            $score      = $redis->get(CacheKey::$scoreKey . $uid);
+            $userInfo   = [
+                "uid" => $uid,
+                "nickname" => $requestParams["nickname"],
+                "mobile" => $requestParams["mobile"] ?? "",
+                "email" => $requestParams["email"] ?? "",
+                "avatar_url" => $requestParams["avatar_url"],
+                "gender" => $requestParams["gender"],
+                "birthday" => $requestParams["birthday"],
+                "remark" => $requestParams["remark"],
+                "profession" => $requestParams["profession"],
+                "name" => $requestParams["name"],
+                "score" => $score + 20,
+            ];
+            $loginToken = $this->updateUserInfo($userInfo);
+            $redis->incrByFloat(CacheKey::$scoreKey . $uid, 20);
+            (new UserRepository())->repositoryUpdate([
+                ["uid", "=", $this->getUserUid()]
+            ], ["score" => $score + 20]);
+            return ["row" => 1, "token" => $loginToken, "user" => $userInfo];
+        }
+        return ["row" => 0];
     }
 
     public function serviceDelete(array $requestParams): int

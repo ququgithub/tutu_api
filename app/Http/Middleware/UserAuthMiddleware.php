@@ -16,7 +16,10 @@ class UserAuthMiddleware
             return Response::error([], 101, "请登录", 401);
         }
         $authorization = trim(str_replace("Bearer", "", $authorization));
-        $userInfo      = UserJwt::decodeJwt($authorization);
+        if (empty($authorization)) {
+            return Response::error([], 101, "请登录", 401);
+        }
+        $userInfo = UserJwt::decodeJwt($authorization);
         if (empty($userInfo)) {
             return Response::error([], 101, "请登录", 401);
         }

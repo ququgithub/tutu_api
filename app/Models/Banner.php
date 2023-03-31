@@ -3,9 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Banner extends Model
+class Banner extends BaseModel
 {
     protected $table = "banner";
 

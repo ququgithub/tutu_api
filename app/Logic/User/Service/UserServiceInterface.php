@@ -8,9 +8,9 @@ interface UserServiceInterface
 
     public function serviceSelect(array $requestParams): array;
 
-    public function serviceCreate(array $requestParams): bool;
+    public function serviceCreate(array $requestParams): array;
 
-    public function serviceUpdate(array $requestParams): int;
+    public function serviceUpdate(array $requestParams): array;
 
     public function serviceDelete(array $requestParams): int;
 

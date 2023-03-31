@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
             return Response::error([], 101, $e->getMessage() . $e->getFile() . $e->getLine(), 404);
         }
         if ($e instanceof HttpException) {
-            return Response::error([], 101, $e->getMessage() . $e->getFile() . $e->getLine(), 403);
+            return Response::error([], 101, $e->getMessage() . "||" . $e->getFile() . $e->getLine(), 403);
         }
         if ($e instanceof ErrorException) {
             return Response::error([], 101, $e->getMessage() . $e->getFile() . $e->getLine(), 500);

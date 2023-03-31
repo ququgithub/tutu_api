@@ -3,35 +3,40 @@ declare(strict_types = 1);
 
 namespace App\Logic\User\Repository;
 
-use App\Models\User\UserModel;
+use App\Models\User\SeriesModel;
 use Closure;
 
-class UserRepository implements UserRepositoryInterface
+class SeriesRepository implements UserRepositoryInterface
 {
 
     public function repositorySelect(Closure $closure, int $perSize, array $searchFields = []): array
     {
-        return [];
+        $items = (new SeriesModel())::query()
+            ->where($closure)
+            ->orderByDesc("orders")
+            ->paginate($perSize, $searchFields);
+
+        return [
+            "items" => $items->items(),
+            "total" => $items->total(),
+            "page" => $items->currentPage(),
+            "size" => $items->perPage(),
+        ];
     }
 
     public function repositoryCreate(array $insertInfo): bool
     {
-        $userModel = (new UserModel())::query()->create($insertInfo);
-
-        return !empty($userModel->getKey());
-
+        return false;
     }
 
     public function repositoryFind(Closure $closure, array $searchFields = []): array
     {
-        $bean = (new UserModel())::query()->where($closure)->first($searchFields);
-
-        return !empty($bean) ? $bean->toArray() : [];
+        return [];
     }
 
     public function repositoryUpdate(array $updateWhere, array $updateInfo): int
     {
-        return (new UserModel())::query()->where($updateWhere)->update($updateInfo);
+        return 0;
     }
 
     public function repositoryWhereInDelete(array $deleteWhere, string $field): int

@@ -19,5 +19,6 @@ class Series extends Model
         "orders",
         "created_at",
         "updated_at",
+        "navigate"
     ];
 }
