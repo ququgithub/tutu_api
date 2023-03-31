@@ -18,7 +18,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "overtrue/wechat": "~5.0",
-        "predis/predis": "^2.1"
+        "predis/predis": "^2.1",
+        "zgldh/qiniu-laravel-storage": "^0.10.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

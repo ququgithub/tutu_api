@@ -3,42 +3,44 @@ declare(strict_types = 1);
 
 namespace App\Logic\User\Service;
 
-use App\Logic\User\Repository\SeriesRepository;
+use App\Logic\User\Repository\ImageItemRepository;
 use Closure;
 
-class SeriesService implements UserServiceInterface
+class ImageItemService implements UserServiceInterface
 {
     public static function searchWhere(array $requestParams): Closure
     {
         return function ($query) use ($requestParams) {
             extract($requestParams);
-            $query->where("is_show", "=", 1);
+            if (!empty($image_uid)) {
+                $query->where("image_uid", "=", $image_uid);
+            }
         };
     }
 
     public function serviceSelect(array $requestParams): array
     {
-        return (new SeriesRepository())->repositorySelect(self::searchWhere($requestParams),
-            (int)($requestParams["size"] ?? 20), ["title", "url", "path", "navigate", "uid"]);
+        return (new ImageItemRepository())->repositorySelect(self::searchWhere($requestParams), (int)($requestParams["size"] ?? 20),
+            ["url", "path", "author_uid", "user_uid", "created_at as upload_time"]);
     }
 
     public function serviceCreate(array $requestParams): array
     {
-        return [];
+        // TODO: Implement serviceCreate() method.
     }
 
     public function serviceUpdate(array $requestParams): array
     {
-        return [];
+        // TODO: Implement serviceUpdate() method.
     }
 
     public function serviceDelete(array $requestParams): int
     {
-        return 0;
+        // TODO: Implement serviceDelete() method.
     }
 
     public function serviceFind(array $requestParams): array
     {
-        return [];
+        // TODO: Implement serviceFind() method.
     }
 }

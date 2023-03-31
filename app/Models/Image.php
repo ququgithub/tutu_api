@@ -3,23 +3,24 @@ declare(strict_types = 1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Series extends Model
+class Image extends BaseModel
 {
-    protected $table = "series";
+    protected $table = "image";
 
     protected $fillable = [
-        "id",
         "uid",
-        "title",
+        "user_uid",
+        "author_uid",
+        "series_uid",
+        "category_uid",
+        "item_count",
         "url",
         "path",
-        "is_show",
-        "orders",
+        "title",
+        "download",
+        "collect",
         "created_at",
         "updated_at",
-        "navigate"
     ];
 
     protected $casts = [

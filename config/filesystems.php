@@ -38,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -51,7 +51,19 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+        'qiniu' => [
+            'driver' => 'qiniu',
+            'domains' => [
+                'default' => env("QINIU_DOMAINS", ""),
+                'https' => env("QINIU_HTTPS", ""),
+                'custom' => env("QINIU_CUSTOM", ""),
+            ],
+            'access_key' => env("QINIU_ACCESS_KEY", ""),
+            'secret_key' => env("QINIU_SECRET_KEY", ""),
+            'bucket' => env("QINIU_BUCKET", ""),
+            'notify_url' => env("QINIU_NOTIDY_URL", ""),
+            'url' => env("QINIU_URL", ""),
+        ],
     ],
 
     /*

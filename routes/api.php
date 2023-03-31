@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ImageItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\UserController;
@@ -17,4 +20,10 @@ Route::prefix("banner")->group(function (Router $router) {
 });
 Route::prefix("img")->group(function (Router $router) {
     $router->get("series", [SeriesController::class, "list"]);
+    $router->get("list", [ImageController::class, "index"]);
+    $router->get("item", [ImageItemController::class, "list"]);
+});
+
+Route::prefix("file")->group(function (Router $router) {
+    $router->post("upload", [FileUploadController::class, "upload"]);
 });
