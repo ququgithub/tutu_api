@@ -15,4 +15,8 @@ class Category extends Model
         "is_show",
         "orders",
     ];
+
+    protected $casts = [
+        "uid" => "string",
+    ];
 }
