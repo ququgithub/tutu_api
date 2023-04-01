@@ -10,6 +10,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-redis": "*",
+        "codingyu/laravel-ueditor": "~2.0",
+        "codingyu/ueditor": "^3.0",
+        "encore/laravel-admin": "^1.8",
         "fideloper/proxy": "^4.4",
         "firebase/php-jwt": "^6.4",
         "fruitcake/laravel-cors": "^2.0",

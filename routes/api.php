@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DocumentGroupController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImageItemController;
@@ -26,4 +28,10 @@ Route::prefix("img")->group(function (Router $router) {
 
 Route::prefix("file")->group(function (Router $router) {
     $router->post("upload", [FileUploadController::class, "upload"]);
+});
+
+Route::prefix("doc")->group(function (Router $router) {
+    $router->get("list", [DocumentController::class, "list"]);
+    $router->get("show", [DocumentController::class, "show"]);
+    $router->get("group", [DocumentGroupController::class, "list"]);
 });
