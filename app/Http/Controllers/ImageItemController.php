@@ -14,4 +14,9 @@ class ImageItemController extends Controller
     {
         return Response::success((new ImageItemService())->serviceSelect(request()->all()));
     }
+
+    public function download(): JsonResponse
+    {
+        return Response::success((new ImageItemService())->serviceFind(request()->all()));
+    }
 }

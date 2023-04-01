@@ -19,4 +19,8 @@ class ImageItem extends BaseModel
         "created_at",
         "updated_at",
     ];
+
+    protected $casts = [
+        "uid" => "string",
+    ];
 }

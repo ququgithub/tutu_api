@@ -3,39 +3,26 @@ declare(strict_types = 1);
 
 namespace App\Logic\User\Repository;
 
-use App\Models\User\ImageItemModel;
+use App\Models\User\TemplateHistoryModel;
 use Closure;
 
-class ImageItemRepository implements UserRepositoryInterface
+class TemplateHistoryRepository implements UserRepositoryInterface
 {
 
     public function repositorySelect(Closure $closure, int $perSize, array $searchFields = []): array
     {
-        $items = (new ImageItemModel())::query()
-            ->with(["author:uid,qr_url"])
-            ->with(["user:uid,nickname"])
-            ->where($closure)
-            ->orderByDesc("id")
-            ->paginate($perSize, $searchFields);
-
-        return [
-            "items" => $items->items(),
-            "total" => $items->total(),
-            "page" => $items->currentPage(),
-            "size" => $items->perPage(),
-        ];
+        // TODO: Implement repositorySelect() method.
     }
 
     public function repositoryCreate(array $insertInfo): bool
     {
-        // TODO: Implement repositoryCreate() method.
+        $templateModel = (new TemplateHistoryModel())::query()->create($insertInfo);
+        return !empty($templateModel->getKey());
     }
 
     public function repositoryFind(Closure $closure, array $searchFields = []): array
     {
-        $bean = (new ImageItemModel())::query()->where($closure)->first($searchFields);
-
-        return !empty($bean) ? $bean->toArray() : [];
+        // TODO: Implement repositoryFind() method.
     }
 
     public function repositoryUpdate(array $updateWhere, array $updateInfo): int
