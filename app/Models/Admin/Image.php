@@ -15,6 +15,16 @@ class Image extends \App\Models\Image
         "cover"
     ];
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, "category_uid", "uid");
+    }
+
+    public function series(): BelongsTo
+    {
+        return $this->belongsTo(Series::class, "series_uid", "uid");
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class, "author_uid", "uid");

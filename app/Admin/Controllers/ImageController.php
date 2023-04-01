@@ -36,6 +36,8 @@ class ImageController extends AdminController
         $grid->paginate(10);
 
         $grid->column("user.nickname", "用户昵称");
+        $grid->column("category.title", "相册类型");
+        $grid->column("series.title", "相册系列");
         $grid->column("title", "相册名称");
         $grid->column("cover", "相册封面")->image("", 50, 50);
         $grid->column("download", "下载次数");
