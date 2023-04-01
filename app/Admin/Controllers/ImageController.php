@@ -60,8 +60,8 @@ class ImageController extends AdminController
     {
         $form = new Form(new Image());
         $form->hidden("uid", "相册编号")->default(SnowFlakeId::getId());
-        $form->hidden("author_uid", "相册作者")->default("482113284229562466");
-        $form->hidden("user_uid", "相册用户")->default("482113284229562466");
+        $form->hidden("author_uid", "相册作者")->default(env("AUTHOR_ID"));
+        $form->hidden("user_uid", "相册用户")->default(env("ADMIN_ID"));
         $form->hidden("url", "相册地址")->default(env("QINIU_URL"));
         $form->select("series_uid", "相册系列")->options(Series::getList())->required();
         $form->select("category_uid", "相册系列")->options(Category::getList())->required();

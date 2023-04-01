@@ -47,8 +47,8 @@ class ImageItemUpload extends RowAction
     {
         $this->hidden("image_uid", "相册编号")->default($this->getRow()->getAttribute("uid"));
         $this->hidden("uid", "相册编号")->default(SnowFlakeId::getId());
-        $this->hidden("author_uid", "相册作者")->default("482113284229562466");
-        $this->hidden("user_uid", "相册用户")->default("482113284229562466");
+        $this->hidden("author_uid", "相册作者")->default(env("AUTHOR_ID"));
+        $this->hidden("user_uid", "相册用户")->default(env("AUTHOR_ID"));
         $this->hidden("url", "相册地址")->default(env("QINIU_URL"));
         $this->multipleImage("path", "相册图片")->sortable()->required();
     }
