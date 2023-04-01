@@ -12,7 +12,7 @@ class CreateDocument extends Migration
         Schema::create('document', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("uid", false, true)->unique();
-            $table->bigInteger("group_uid", false, true)->unique();
+            $table->bigInteger("group_uid", false, true);
             $table->string("title", 32);
             $table->longText("content");
             $table->tinyInteger("is_show", false, true)->default(2);
