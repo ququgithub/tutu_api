@@ -6,6 +6,7 @@ use App\Admin\Controllers\HomeController;
 use App\Admin\Controllers\ImageCategoryController;
 use App\Admin\Controllers\ImageController;
 use App\Admin\Controllers\ImageSeriesController;
+use App\Admin\Controllers\TemplateHistoryController;
 use App\Admin\Controllers\UserController;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
@@ -27,4 +28,5 @@ Route::group([
     $router->resource("documents/group", DocumentGroupController::class);
     $router->resource("documents", DocumentController::class);
     $router->resource("user", UserController::class);
+    $router->resource("template/history", TemplateHistoryController::class);
 });
