@@ -24,7 +24,7 @@ class TemplateHistoryController extends AdminController
                 $filter->between('created_at', "订阅时间")->datetime();
             });
         });
-        $grid->paginate(10);
+        $grid->paginate(20);
         $grid->column("uid", "数据编号")->copyable();
         $grid->column("user.avatar_url", "用户头像")->image("", 50, 50);
         $grid->column("user.nickname", "用户昵称");
