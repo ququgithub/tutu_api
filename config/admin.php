@@ -410,6 +410,9 @@ return [
             'config' => [
                 'initialFrameHeight' => 400, // 例如初始化高度
             ],
+        ],
+        'echarts' => [
+            'enable' => true,
         ]
     ],
 ];
