@@ -4,6 +4,7 @@ use App\Admin\Controllers\DocumentController;
 use App\Admin\Controllers\DocumentGroupController;
 use App\Admin\Controllers\HomeController;
 use App\Admin\Controllers\ImageController;
+use App\Admin\Controllers\UserController;
 use Encore\Admin\Facades\Admin;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ Route::group([
     $router->resource("image", ImageController::class);
     $router->resource("documents/group", DocumentGroupController::class);
     $router->resource("documents", DocumentController::class);
+    $router->resource("user", UserController::class);
 });
