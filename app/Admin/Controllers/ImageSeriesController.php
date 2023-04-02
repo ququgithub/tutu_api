@@ -30,6 +30,7 @@ class ImageSeriesController extends AdminController
             });
         });
         $grid->paginate(10);
+        $grid->model()->orderByDesc("id");
 
         $grid->column("title", "系列名称");
         $grid->column("cover", "系列封面")->image("", 50, 50);

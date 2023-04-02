@@ -29,7 +29,8 @@ class ImageCategoryController extends AdminController
                 $filter->between('created_at', "创建时间")->datetime();
             });
         });
-        $grid->paginate(10);
+        $grid->paginate(20);
+        $grid->model()->orderByDesc("id");
 
         $grid->column("title", "分类名称");
         $grid->column("order", "显示顺序");

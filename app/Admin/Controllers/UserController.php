@@ -32,6 +32,7 @@ class UserController extends AdminController
             });
         });
         $grid->paginate(20);
+        $grid->model()->orderByDesc("id");
         $grid->column("uid", "用户编号")->copyable();
         $grid->column("avatar_url", "用户头像")->image("", 50, 50);
         $grid->column("nickname", "用户昵称");

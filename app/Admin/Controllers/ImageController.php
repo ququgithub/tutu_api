@@ -32,7 +32,8 @@ class ImageController extends AdminController
                 $filter->between('created_at', "创建时间")->datetime();
             });
         });
-        $grid->paginate(10);
+        $grid->paginate(20);
+        $grid->model()->orderByDesc("id");
 
         $grid->column("user.nickname", "用户昵称");
         $grid->column("category.title", "相册类型");
