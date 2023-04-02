@@ -5,6 +5,10 @@ namespace App\Models\Admin;
 
 class Series extends \App\Models\Series
 {
+    protected $appends = [
+        "cover"
+    ];
+
     public static function getList(): array
     {
         $items = self::query()->where([
@@ -15,5 +19,10 @@ class Series extends \App\Models\Series
             $array[$value->uid] = $value->title;
         }
         return $array;
+    }
+
+    public function getCoverAttribute($key): string
+    {
+        return $this->getAttribute("url") . $this->getAttribute("path");
     }
 }
