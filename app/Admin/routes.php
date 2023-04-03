@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\DocumentController;
 use App\Admin\Controllers\DocumentGroupController;
 use App\Admin\Controllers\HomeController;
@@ -29,4 +30,5 @@ Route::group([
     $router->resource("documents", DocumentController::class);
     $router->resource("user", UserController::class);
     $router->resource("template/history", TemplateHistoryController::class);
+    $router->resource("banner", BannerController::class);
 });
