@@ -31,7 +31,7 @@ class UserController extends AdminController
                 $filter->between('birthday', "用户生日")->date();
             });
         });
-        $grid->paginate(20);
+        $grid->paginate(15);
         $grid->model()->orderByDesc("id");
         $grid->column("uid", "用户编号")->copyable();
         $grid->column("avatar_url", "用户头像")->image("", 50, 50);
