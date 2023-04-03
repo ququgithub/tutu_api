@@ -23,7 +23,7 @@ class BannerController extends AdminController
         $grid->column("uid", "数据编号")->copyable();
         $grid->column("first_title", "一级标题");
         $grid->column("second_title", "二级标题");
-        $grid->column("cover", "图片封面")->image("", 50, 50);
+        $grid->column("cover", "图片封面")->image("", 50, 100);
         $grid->column("orders", "显示顺序");
         $grid->column("navigate", "跳转地址");
         $grid->column('is_show', "上架状态")->display(function ($is_show) {
