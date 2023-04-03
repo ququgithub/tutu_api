@@ -4,6 +4,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentGroupController;
+use App\Http\Controllers\EmoGroupController;
+use App\Http\Controllers\EmoImageController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ImageItemController;
@@ -28,6 +30,11 @@ Route::prefix("img")->group(function (Router $router) {
     $router->get("item", [ImageItemController::class, "list"]);
     $router->get("category", [CategoryController::class, "index"]);
     $router->get("download", [ImageItemController::class, "download"])->middleware(["auth"]);
+});
+
+Route::prefix("emo")->group(function (Router $router) {
+    $router->get("group", [EmoGroupController::class, "index"]);
+    $router->get("image", [EmoImageController::class, "index"]);
 });
 
 Route::prefix("file")->group(function (Router $router) {

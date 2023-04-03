@@ -3,6 +3,8 @@
 use App\Admin\Controllers\BannerController;
 use App\Admin\Controllers\DocumentController;
 use App\Admin\Controllers\DocumentGroupController;
+use App\Admin\Controllers\EmoGroupController;
+use App\Admin\Controllers\EmoImageController;
 use App\Admin\Controllers\HomeController;
 use App\Admin\Controllers\ImageCategoryController;
 use App\Admin\Controllers\ImageController;
@@ -31,4 +33,6 @@ Route::group([
     $router->resource("user", UserController::class);
     $router->resource("template/history", TemplateHistoryController::class);
     $router->resource("banner", BannerController::class);
+    $router->resource("emo/group", EmoGroupController::class);
+    $router->resource("emo/list", EmoImageController::class);
 });

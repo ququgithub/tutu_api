@@ -7,8 +7,8 @@ use Godruoyi\Snowflake\Snowflake;
 
 class SnowFlakeId
 {
-    public static function getId(): string
+    public static function getId(int $datacenter = null, int $workerid = null): string
     {
-        return (new Snowflake())->id();
+        return (new Snowflake($datacenter, $workerid))->id();
     }
 }
