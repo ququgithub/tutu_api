@@ -20,7 +20,7 @@ class BannerService implements UserServiceInterface
     public function serviceSelect(array $requestParams): array
     {
         return (new BannerRepository())->repositorySelect(self::searchWhere($requestParams),
-            (int)($requestParams["size"] ?? 20), ["first_title", "second_title", "url", "path"]);
+            (int)($requestParams["size"] ?? 20), ["first_title", "second_title", "url", "path", "navigate"]);
     }
 
     public function serviceCreate(array $requestParams): array
