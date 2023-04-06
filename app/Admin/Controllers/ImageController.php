@@ -39,7 +39,7 @@ class ImageController extends AdminController
         $grid->column("category.title", "相册类型");
         $grid->column("series.title", "相册系列");
         $grid->column("title", "相册名称");
-        $grid->column("cover", "相册封面")->image("", 50, 50)->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column("cover", "相册封面")->lightbox(['width' => 50, 'height' => 50]);
         $grid->column("download", "下载次数");
         $grid->column("collect", "收藏次数");
         $grid->column("item_count", "相册数量");
