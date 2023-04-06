@@ -33,7 +33,7 @@ class EmoImageController extends AdminController
         $grid->column("group.title", "分组名称");
         $grid->column("title", "图片名称");
         $grid->column("title", "相册名称");
-        $grid->column("img_back", "相册封面")->image("", 50, 50);
+        $grid->column("img_back", "相册封面")->image("", 50, 50)->lightbox(['width' => 50, 'height' => 50]);
         $grid->column("width", "图片宽度");
         $grid->column("height", "图片高度");
         $grid->column("type", "图片类型");

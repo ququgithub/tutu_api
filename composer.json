@@ -19,6 +19,7 @@
         "godruoyi/php-snowflake": "^2.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "jxlwqq/echarts": "^1.0",
+        "laravel-admin-ext/grid-lightbox": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "overtrue/wechat": "~5.0",

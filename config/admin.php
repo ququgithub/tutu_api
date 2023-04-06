@@ -413,6 +413,9 @@ return [
         ],
         'echarts' => [
             'enable' => true,
-        ]
+        ],
+        'grid-lightbox' => [
+            'enable' => true, 
+        ] 
     ],
 ];
