@@ -34,7 +34,7 @@ class UserController extends AdminController
         $grid->paginate(15);
         $grid->model()->orderByDesc("id");
         $grid->column("uid", "用户编号")->copyable();
-        $grid->column("avatar_url", "用户头像")->image("", 50, 50);
+        $grid->column("avatar_url", "用户头像")->lightbox(['width' => 50, 'height' => 50]);
         $grid->column("nickname", "用户昵称");
         $grid->column("name", "用户姓名");
         $grid->column("openid", "用户OpenId")->copyable();

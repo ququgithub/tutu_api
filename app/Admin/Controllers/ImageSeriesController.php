@@ -33,7 +33,7 @@ class ImageSeriesController extends AdminController
         $grid->model()->orderByDesc("id");
 
         $grid->column("title", "系列名称");
-        $grid->column("cover", "系列封面")->image("", 50, 50);
+        $grid->column("cover", "系列封面")->lightbox(['width' => 50, 'height' => 50]);
         $grid->column("navigate", "跳转地址");
         $grid->column('is_show', "上架状态")->display(function ($is_show) {
             if ($is_show == 1) {
